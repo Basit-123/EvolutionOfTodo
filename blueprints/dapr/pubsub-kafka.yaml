@@ -1,0 +1,16 @@
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: pubsub
+spec:
+  type: pubsub.kafka
+  version: v1
+  metadata:
+  - name: brokers
+    value: "kafka.default.svc.cluster.local:9092"
+  - name: authType
+    value: "none"
+  - name: consumerID
+    value: "todo-group"
+  - name: publishMaxRetries
+    value: "5"
