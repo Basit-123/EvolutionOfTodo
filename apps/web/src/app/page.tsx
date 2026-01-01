@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 
 interface Todo {
   id: number;
-  title: str;
+  title: string;
   description: string;
   status: string;
   priority: string;
@@ -16,7 +16,8 @@ export default function Dashboard() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:8000/api/v1/todos")
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+    fetch(`${apiUrl}/api/v1/todos`)
       .then((res) => res.json())
       .then((data) => {
         setTodos(data);
